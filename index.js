@@ -8,6 +8,7 @@ let port = 3001;
 let app = koa();
 
 app.use(serve('static'));
+app.use(serve('bower_components'));
 
 app.use(router.routes());
 

@@ -1,0 +1,20 @@
+{
+  "name": "api-talk",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Doug Wade <doug.wade@redfin.com>"
+  ],
+  "description": "Walk Score presentation for Seattle API",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "q": "^1.4.1"
+  }
+}

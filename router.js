@@ -73,6 +73,16 @@ function getRoute(id) {
   return deferred.promise;
 }
 
+function getTravelTimePolygon(origin) {
+  let deferred = Q.defer();
+  let url = 'http://api2.walkscore.com/api/v1/traveltime_polygon/json?wsapikey=' + globalKeys.walkScoreApiKey
+    + '&origin=' + origin.lat + '%2C' + origin.lng + '&mode=bike&time=20';
+
+  http.get(url, deferred.resolve);
+
+  return deferred.promise;
+}
+
 // Example usage:
 // curl localhost:3001/api/walk/2025%201st%20Avenue%20Suite%20500,%20Seattle,%20WA%2098121 | json-prettify | less
 router.get('/api/walk/:address', function *(next) {
@@ -111,6 +121,16 @@ router.get('/api/stop/:id', function *(next) {
 
   this.body = stop;
 });
+
+// Example usage:
+// curl localhost:3001/api/travel/2025%201st%20Avenue%20Suite%20500,%20Seattle,%20WA%2098121
+router.get('/api/travel/:address', function *(next) {
+  let address = this.params.address;
+  let origin = yield getLocationFromGoogle(address);
+  let polygon = yield getTravelTimePolygon(origin);
+
+  this.body = polygon;
+})
 
 router.redirect('/', 'index.html');
 
