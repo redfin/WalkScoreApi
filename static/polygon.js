@@ -1,7 +1,7 @@
 var map;
 
 function getTravelTimePolygon() {
-  var url = "http://localhost:3001/api/travel/2025%201st%20Avenue%20Suite%20500,%20Seattle,%20WA%2098121";
+  var url = "http://localhost:3000/api/travel/2025%201st%20Avenue%20Suite%20500,%20Seattle,%20WA%2098121";
   var deferred = Q.defer();
   var xhr = new XMLHttpRequest();
   xhr.addEventListener('load', function() {

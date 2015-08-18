@@ -1,7 +1,7 @@
 var map;
 
 function getRoute() {
-  var url = "http://localhost:3001/api/route/6fffc9e7af7a9a444b12fd2ae2685281ab42bc1e";
+  var url = "http://localhost:3000/api/route/6fffc9e7af7a9a444b12fd2ae2685281ab42bc1e";
   var deferred = Q.defer();
   var xhr = new XMLHttpRequest();
   xhr.addEventListener('load', function() {

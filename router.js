@@ -92,6 +92,7 @@ router.get('/api/walk/:address', function *(next) {
   let walkScore = yield getWalkScore(address, location);
 
   this.body = walkScore;
+  this.set({ "Content-Type": "application/json" });
 });
 
 // Example usage:
@@ -102,6 +103,7 @@ router.get('/api/stops/:address', function *(next) {
   let stops = yield getStops(location);
 
   this.body = stops;
+  this.set({ "Content-Type": "application/json" });
 });
 
 // Example usage:
@@ -111,6 +113,7 @@ router.get('/api/route/:id', function *(next) {
   let route = yield getRoute(id);
 
   this.body = route;
+  this.set({ "Content-Type": "application/json" });
 });
 
 // Example usage:
@@ -120,6 +123,7 @@ router.get('/api/stop/:id', function *(next) {
   let stop = yield getStop(id);
 
   this.body = stop;
+  this.set({ "Content-Type": "application/json" });
 });
 
 // Example usage:
@@ -130,6 +134,7 @@ router.get('/api/travel/:address', function *(next) {
   let polygon = yield getTravelTimePolygon(origin);
 
   this.body = polygon;
+  this.set({ "Content-Type": "application/json" });
 })
 
 router.redirect('/', 'index.html');
