@@ -55,6 +55,24 @@ function getStops(location) {
     return deferred.promise;
 }
 
+function getStop(id) {
+  let deferred = Q.defer();
+  let url = 'http://transit.walkscore.com/transit/stop/' + id + '?format=json&wsapikey=' + globalKeys.walkScoreApiKey;
+
+  http.get(url, deferred.resolve);
+
+  return deferred.promise;
+}
+
+function getRoute(id) {
+  let deferred = Q.defer();
+  let url = 'http://transit.walkscore.com/transit/route/' + id + '?format=json&wsapikey=' + globalKeys.walkScoreApiKey;
+
+  http.get(url, deferred.resolve);
+
+  return deferred.promise;
+}
+
 // Example usage:
 // curl localhost:3001/api/walk/2025%201st%20Avenue%20Suite%20500,%20Seattle,%20WA%2098121 | json-prettify | less
 router.get('/api/walk/:address', function *(next) {
@@ -74,6 +92,24 @@ router.get('/api/stops/:address', function *(next) {
   let stops = yield getStops(location);
 
   this.body = stops;
+});
+
+// Example usage:
+// curl localhost:3001/api/route/6fffc9e7af7a9a444b12fd2ae2685281ab42bc1e
+router.get('/api/route/:id', function *(next) {
+  let id = this.params.id;
+  let route = yield getRoute(id);
+
+  this.body = route;
+});
+
+// Example usage:
+// curl localhost:3001/api/stop/fb1522a4c2ba6265619b2e7054a9f4c74ea11479
+router.get('/api/stop/:id', function *(next) {
+  let id = this.params.id;
+  let stop = yield getStop(id);
+
+  this.body = stop;
 });
 
 router.redirect('/', 'index.html');
