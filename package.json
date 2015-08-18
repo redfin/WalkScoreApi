@@ -1,0 +1,17 @@
+{
+  "name": "api-talk",
+  "version": "1.0.0",
+  "description": "A quick koa server for demoing Walkscore APIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Wade <dougwade@redfin.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^0.21.0",
+    "koa-router": "^5.1.2",
+    "koa-static": "^1.4.9",
+    "q": "^1.4.1"
+  }
+}
