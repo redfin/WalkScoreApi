@@ -4,7 +4,7 @@ let koa = require('koa');
 let serve = require('koa-static');
 let router = require('./router.js');
 
-let port = 3001;
+let port = 3000;
 let app = koa();
 
 app.use(serve('static'));
